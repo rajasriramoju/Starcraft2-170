@@ -20,19 +20,43 @@ tot = 4334
 fileNum = ""
 currPath = ""
 
+# NN matrix needs 41 columns
+# Matrixtest = [[0 for a in range(3)] for b in range(10)]  -> creates 10 rows and 3 colummns ->for reference
 
-for i in range(5):
-	
-	#f = np.asarray(sparse.load_npz('./Protoss/4.npz').todense())
+#NNmatrix = [[for colno in range(41)] ]
+
+#initializing an empty matrix to contain the neural network data
+NNMatrix = []
+
+#loop for opening files
+for i in range(tot):
+
+	if(i == 10 or (i >= 109 and i<113) or (i >=999 and i < 1139)):
+		continue
+
+	#creating the filename to open
 	fileNum = str(i + 1)
 	currPath = "./Protoss/" + fileNum + ".npz"
 	print(currPath)
+
+	#loading the entire numpy array from a file
 	f = np.asarray(sparse.load_npz(currPath).todense())
-	print(f[0,0])
-	
-	
+	# print(f[0,0])
+
+	# This 1D array will consist the details of 1 game's
+	matrixrow = []
+	#print(matrixrow)
+	# matrixrow[0] = 0 -> this element is to be set the bias weight
+
+	if (f[0,0] == 1):
+		for colno in range(42):
+			matrixrow.append(f[0, 71+(colno*6)])
+
+		NNMatrix.append(matrixrow)
+
+print(NNMatrix)
 	
 	
 
 
-def find
+#def find
