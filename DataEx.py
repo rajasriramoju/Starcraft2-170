@@ -31,9 +31,6 @@ NNMatrix = []
 #loop for opening files
 for i in range(tot):
 
-	if(i == 10 or (i >= 109 and i<113) or (i >=999 and i < 1139)):
-		continue
-
 	#creating the filename to open
 	fileNum = str(i + 1)
 	currPath = "./Protoss/" + fileNum + ".npz"
