@@ -41,7 +41,6 @@ for i in range(tot):
 	#loading the entire numpy array from a file
 	f = np.asarray(sparse.load_npz(currPath).todense())
 	# This 1D array will consist the details of 1 game's
-	matrixrow = []
 	#print(matrixrow)
 	# matrixrow[0] = 0 -> this element is to be set the bias weight
 
@@ -52,19 +51,18 @@ for i in range(tot):
 	if (f[0,0] == 1):
 		gamemat = []
 		for rowno in range(shape[0]):
-			frame = [f[rowno, 2], f[rowno, 16], f[rowno, 17]]
+			frame = [f[rowno, 2], f[rowno, 15:25]]
 			for u in units:
-				frame.append(f[rowno, 71 + u])
+				frame.append(f[rowno, 71 + u * 6])
 			for u in units:
-				frame.append(f[rowno, 317 + u])
+				frame.append(f[rowno, 317 + u * 6])
 								
 			gamemat.append(frame)
 
 		NNMatrix.append(gamemat)
 
 print(NNMatrix[0])
-np.save("scoreResourcesFriendEnemy.npy", NNMatrix)
-	
+np.save("scoreResourcesFriendEnemy2.npy", NNMatrix)
 	
 
 
