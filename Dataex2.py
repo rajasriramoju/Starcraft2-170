@@ -21,6 +21,7 @@ fileNum = ""
 currPath = ""
 
 units = [13, 1, 30, 16, 3, 36, 29, 2, 15, 24, 22, 34, 5, 8, 11, 7, 12, 35, 28]
+unit_names = ['Probe','Zealot','Stalker','Sentry','Adept','High Templar','Dark Templar','Immortal','Colossus','Disruptor','Archon','Observer','Warp Prism','Phoenix','Void Ray','Oracle','Carrier','Tempest','Mothership']
 
 # NN matrix needs 41 columns
 # Matrixtest = [[0 for a in range(3)] for b in range(10)]  -> creates 10 rows and 3 colummns ->for reference
@@ -52,12 +53,26 @@ for i in range(tot):
 		gamemat = []
 		for rowno in range(shape[0]):
 			frame = [f[rowno, 2], f[rowno, 15:25]]
+			differences = {}
+			int i = 0
+			bool eog = False
 			for u in units:
 				frame.append(f[rowno, 71 + u * 6])
+				try:
+					differences[unit_names[i]] = f[rowno + 1, 71 + u * 6] - f[rowno, 71 + u * 6]
+				except:
+					eog = True
+					print("Reached the end of game.")
+					break
+				i++
 			for u in units:
+				if eog is True:
+					break
 				frame.append(f[rowno, 317 + u * 6])
-								
-			gamemat.append(frame)
+			if eog is False:
+				#max of units append
+				frame.append(max(differences, key = differences.get))				
+				gamemat.append(frame)
 
 		NNMatrix.append(gamemat)
 
