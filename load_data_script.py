@@ -18,22 +18,21 @@ for input_file in glob.glob("*.npy"):
 	#np.concatenate([column_names,data])
 	#process the frames and append onto frame
 	df = pd.DataFrame(data, columns = column_names)
-
-	print(df.shape)
-	df.to_csv(r'testing.txt', header=True, index=None, sep=' ', mode='a')
+	
+	msk = np.random.rand(len(df)) < 0.75
+	train = df[msk]
+	test = df[-msk]
+	print(typeof(train))
+	print(typeof(test))
+	#print(df.shape)
+	#df.to_csv(r'testing.txt', header=True, index=None, sep=' ', mode='a')
 
 	#neural network implementation
 	#probably 1 or 2 hiddne layers
 	#inputs depend on choices
 	#bias will involve cumulative score
 '''
-	msk = np.random.rand(len(X)) < 0.8
-
-	train_X = X[msk]
-	train_Y = Y[msk]
-
-	test_X = df[~msk]
-	test_Y = df[~msk]
+		
 
 	model = Sequential()
 
