@@ -23,6 +23,8 @@ currPath = ""
 units = [13, 1, 30, 16, 3, 36, 29, 2, 15, 24, 22, 34, 5, 8, 11, 7, 12, 35, 28]
 unit_names = ['Probe','Zealot','Stalker','Sentry','Adept','High Templar','Dark Templar','Immortal','Colossus','Disruptor','Archon','Observer','Warp Prism','Phoenix','Void Ray','Oracle','Carrier','Tempest','Mothership']
 
+unit_names_dict = {'Probe':0,'Zealot':1,'Stalker':2,'Sentry':3,'Adept':4,'High Templar':5,'Dark Templar':6,'Immortal':7,'Colossus':8,'Disruptor':9,'Archon':10,'Observer':11,'Warp Prism':12,'Phoenix':13,'Void Ray':14,'Oracle':15,'Carrier':16,'Tempest':17,'Mothership':18}
+
 # NN matrix needs 41 columns
 # Matrixtest = [[0 for a in range(3)] for b in range(10)]  -> creates 10 rows and 3 colummns ->for reference
 
@@ -78,9 +80,9 @@ for i in range(tot):
 				# raw_input('?')
 				ma = max(differences, key = differences.get)
 				if differences[ma] == 0.0:
-					frame.append('Null')
+					frame.append(19)
 				else :
-					frame.append(max(differences, key = differences.get))
+					frame.append(unit_names_dict[max(differences, key = differences.get)])
 
 				gamemat.append(frame)
 
