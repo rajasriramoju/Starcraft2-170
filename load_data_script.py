@@ -21,7 +21,7 @@ for input_file in glob.glob("*.npy"):
 	
 	msk = np.random.rand(len(df)) < 0.75
 	train = df[msk]
-	test = df[-msk]
+	test = df[~msk]
 	print(typeof(train))
 	print(typeof(test))
 	#print(df.shape)
