@@ -1,20 +1,22 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-from scipy.stats import beta
+from scipy.stats import norm
 
-bet = beta(1, 2)
-curve = np.arange(0.0, 1, .05)
+bet = norm(loc=.5, scale=.2)
+# curve = np.arange(0.0, 1, .05)
 
 # plt.plot(curve, bet.pdf(curve), linewidth=2.0)
 # plt.show()
 
 inter_vals = bet.cdf(np.arange(0, 1, .1))
+inter_vals[0] = 0.0
 print inter_vals
 
 
-# data = np.load("scoreResourcesFriendEnemy.npy")
-intervals = [[]]*10
+data = np.load("scoreResourcesFriendEnemy.npy")
+
+intervals = [[], [], [], [], [], [], [], [], [], []]
 
 for game in data :
 
@@ -31,8 +33,10 @@ for game in data :
 				break
 			interval_index += 1
 
+		# print interval_index
+		# raw_input()
+
 		intervals[interval_index - 1].append(game[i])
 
-
-print intervals[-1][100]
-
+for i in range(10):
+	intervals[i].save('interval' + str(i) + '.npy')

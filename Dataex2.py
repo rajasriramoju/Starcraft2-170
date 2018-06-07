@@ -52,32 +52,44 @@ for i in range(tot):
 	if (f[0,0] == 1):
 		gamemat = []
 		for rowno in range(shape[0]):
-			frame = [f[rowno, 2], f[rowno, 15:25]]
+			frame = [f[rowno, 2]]
+			for n in range(15, 25):
+				frame.append(f[rowno, n])
+
 			differences = {}
-			int i = 0
-			bool eog = False
+			i = 0
+			eog = False
 			for u in units:
 				frame.append(f[rowno, 71 + u * 6])
 				try:
 					differences[unit_names[i]] = f[rowno + 1, 71 + u * 6] - f[rowno, 71 + u * 6]
 				except:
 					eog = True
-					print("Reached the end of game.")
+					# print("Reached the end of game.")
 					break
-				i++
+				i += 1
 			for u in units:
 				if eog is True:
 					break
 				frame.append(f[rowno, 317 + u * 6])
 			if eog is False:
 				#max of units append
-				frame.append(max(differences, key = differences.get))				
+				# print max(differences, key = differences.get)
+				# raw_input('?')
+				ma = max(differences, key = differences.get)
+				if differences[ma] == 0.0:
+					frame.append('Null')
+				else :
+					frame.append(max(differences, key = differences.get))
+
 				gamemat.append(frame)
 
 		NNMatrix.append(gamemat)
 
-print(NNMatrix[0])
-np.save("scoreResourcesFriendEnemy2.npy", NNMatrix)
+print np.shape(NNMatrix[0])
+for frame in NNMatrix[0] :
+	print frame[-1]
+np.save("scoreResourcesFriendEnemy.npy", NNMatrix)
 	
 
 

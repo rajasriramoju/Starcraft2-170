@@ -1,4 +1,6 @@
-
+import keras
+from keras.models import Sequential
+from keras.layers import Dense
 
 train_d = np.array([[0,0], [0,1], [1,0], [1,1]])
 tar_d = np.array([[0], [1], [1], [0]])
