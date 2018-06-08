@@ -33,9 +33,12 @@ This script contains the initialization and configuration of a neural network.
 
 #### NeuralNetwork(train, test, file)
 
-Dependencies: Pandas, Numpy, Keras
-train: A pandas dataframe containing same number of columns or features and output as the combined input and output dimensions of neural network.
-test: Same as the train variable.
-file: A string typed file name within the current directory of where modelTemplate is located.
+<mark> Dependencies </mark>: Pandas, Numpy, Keras
+
+<mark> train </mark>: A pandas dataframe containing same number of columns or features and output as the combined input and output dimensions of neural network.
+
+<mark> test </mark>: Same as the train variable.
+
+<mark> file </mark>: A string typed file name within the current directory of where modelTemplate is located.
 
 Configurations of the neural network can be adjusted. Please see the documentation of the Keras framework.
