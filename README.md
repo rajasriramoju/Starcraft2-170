@@ -30,8 +30,6 @@ DataExtract goes into the protoss path to find all the replay games' npz files f
 
 The dimensions of the resulting npy file are:
 
-Cumulative'Frame ID','Minerals','Vespene','Food Cap','Food Used','Food Army','Food Worker','Idle Worker Count','Army Count','Warp Gate Count'
-
 | Cumulative | Frame ID | Minerals | Vespene | Food Cap | Food Used | Food Army | Food Worker | Idle Worker Count | Army Count | Warp Gate Count | 19 Friendly Protoss Units | 19 Enemy Protoss Units |
 |------------|----------|----------|---------|----------|-----------|-----------|-------------|-------------------|------------|-----------------|---------------------------|------------------------|
 
@@ -47,7 +45,9 @@ ExtractModel loads the the data parsed and combined by the dataExtract script. T
 
 ### getIntervals.py and gameIntervals.py
 
-This script contains the 
+This script contains the the code transform the npy file from dataExtract.py to intervals based on the specified distributions that can be tweaked and defined on the top of the page. Default setting is at 20 neural networks with uniform distribution. 
+
+GameIntervals.py is a similar script to getIntervals.py, but instead of a collection game frames it runs on a single game to split it into correspondly intervals of time stamped data for neural network training and testing.
 
 ### modelTemplate.py
 
