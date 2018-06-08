@@ -33,7 +33,7 @@ This script contains the initialization and configuration of a neural network.
 
 #### NeuralNetwork(train, test, file)
 
-<mark> Dependencies </mark>: Pandas, Numpy, Keras
+<span style="color:yellow">Dependencies</span>: Pandas, Numpy, Keras
 
 <mark> train </mark>: A pandas dataframe containing same number of columns or features and output as the combined input and output dimensions of neural network.
 
