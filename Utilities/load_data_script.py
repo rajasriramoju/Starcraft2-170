@@ -22,31 +22,31 @@ for input_file in glob.glob("*.npy"):
 	msk = np.random.rand(len(df)) < 0.75
 	train = df[msk]
 	test = df[~msk]
-	print(type(train))
-	print(type(test))
+	#print(type(train))
+	#print(type(test))
 	#print(df.shape)
 	#df.to_csv(r'testing.txt', header=True, index=None, sep=' ', mode='a')
 
 	#neural network implementation
-	#probably 1 or 2 hiddne layers
-	#inputs depend on choices
-	#bias will involve cumulative score
-'''
-		
-
 	model = Sequential()
 
-	model.add(Dense(49, activation='relu'))
+	model.add(Dense(49, activation='relu', input_dim=49))
 	model.add(Dense(49, activation='relu'))
 	model.add(Dense(49, activation='relu'))
 
 	model.add(Dense(1))
 
-	model.compile(loss='mean_squared_error', optimizer='adam')
+	model.compile(loss='mean_squared_error', optimizer='adam', metrics= ['acc'])
 
-	model.fit(train_X, train_Y, epochs=1000)
+	train_arr_x = train.drop(columns=['Most Beneficial Unit']).values
+	train_arr_y = train['Most Beneficial Unit'].values
 
-	model.evaluate(test_X)
+	test_arr_x = test.drop(columns=['Most Beneficial Unit']).values
+	test_arr_y = test['Most Beneficial Unit'].values
+ 
+	model.fit(train_arr_x, train_arr_y, batch_size=50, epochs=1000)
 
-	print model.predict(np.array([[0,0]]))
-'''
+	print(model.evaluate(test_arr_x, test_arr_y))
+
+	print(model.predict(test_arr_x))
+
