@@ -4,6 +4,10 @@ This library of tools provides the functions to convert observed data into inter
 
 GData and Intervals contain sample datas as the orginal files are larger than github's limit.
 
+## DistributionGraphs
+
+Images of distribution for neural network population. The configuration values are in the title. These values can be inserted getInterval.py to separate a total dataset into interval datasets with corresponding size to the distribution.
+
 ## GData
 
 GData stands for Game Data. The game datas are obtained through the use of PySC2's observer tools to gather players' information such as unit types and their counts, resource rates and numbers, and also total cumulative score of the game.
@@ -64,3 +68,7 @@ This script contains the initialization and configuration of a neural network. S
 - file: A string typed file name within the current directory of where modelTemplate is located.
 
 Configurations of the neural network can be adjusted. Please see the documentation of the Keras framework.
+
+### visual.py
+
+This script loads saved neural network models from extractModel.py. Predict method then executes after loading to utilize and demonstrate the functionality of the loaded model.
