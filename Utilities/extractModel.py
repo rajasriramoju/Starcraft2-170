@@ -1,11 +1,7 @@
 import sys
-import glob
-import keras
 import numpy as np
 import pandas as pd
-from scipy import sparse
-from keras.models import Sequential
-from keras.layers import Dense
+from modelTemplate import NeuralNetwork
 
 def Main(input_file):
 	#Dataframe Column Names
@@ -22,32 +18,8 @@ def Main(input_file):
 	train = df[msk]
 	test = df[~msk]
 
-	#Neural Network Implementation
-
-	#Defining layers with input layer having 49 inputs, activation functions are relu.
-	model = Sequential()
-	model.add(Dense(49, activation='relu', input_dim=49))
-	model.add(Dense(49, activation='relu'))
-	model.add(Dense(49, activation='relu'))
-
-	#Defining output layer with 1 output.
-	model.add(Dense(1))
-
-	#Defining metrics and optimizer for the model.
-	model.compile(loss='mean_squared_error', optimizer='adam', metrics= ['acc'])
-
-	#Train set x processed to have only first 49 columns, train set y processed to containing only last column.
-	train_arr_x = train.drop(columns=['Most Beneficial Unit']).values
-	train_arr_y = train['Most Beneficial Unit'].values
-
-	#Same process for test set x and y.
-	test_arr_x = test.drop(columns=['Most Beneficial Unit']).values
-	test_arr_y = test['Most Beneficial Unit'].values
- 
-	#Training NN
-	model.fit(train_arr_x, train_arr_y, batch_size=50, epochs=1000)
+	#Neural Network
 	
-	#Output the metrics defined in compile
-	print(model.evaluate(test_arr_x, test_arr_y))
+	NeuralNetwork(train,test)
 
 Main(sys.argv[1])
