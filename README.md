@@ -34,8 +34,8 @@ DataExtract goes into the protoss path to find all the replay games' npz files f
 
 The dimensions of the resulting npy file are:
 
-| Cumulative | Frame ID | Minerals | Vespene | Food Cap | Food Used | Food Army | Food Worker | Idle Worker Count | Army Count | Warp Gate Count | 19 Friendly Protoss Units | 19 Enemy Protoss Units |
-|------------|----------|----------|---------|----------|-----------|-----------|-------------|-------------------|------------|-----------------|---------------------------|------------------------|
+| Cumulative | Frame ID | Minerals | Vespene | Food Cap | Food Used | Food Army | Food Worker | Idle Worker Count | Army Count | Warp Gate Count | 19 Friendly Protoss Units | 19 Enemy Protoss Units | Most Beneficial Unit |
+|------------|----------|----------|---------|----------|-----------|-----------|-------------|-------------------|------------|-----------------|---------------------------|------------------------|----------------------|
 
 Please see the list call [unit](https://github.com/rajasriramoju/Starcraft2-170/blob/master/Utilities/dataExtract.py) for friendly and enemy protoss unit orders. 
 
