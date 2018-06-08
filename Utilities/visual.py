@@ -1,7 +1,8 @@
-import numpy as np
+import numpy as npx	
 from keras.models import load_model
 
-
+# Displays a visual method to see how well a prediction model fits the
+# actual label
 
 # unit names encoding for 
 unit_names_dict = {'Null':0, 'Probe':1,'Zealot':2,'Stalker':3,'Sentry':4,'Adept':5,'High Templar':6,'Dark Templar':7,'Immortal':8,'Colossus':9,'Disruptor':10, 'Archon':11,'Observer':12,'Warp Prism':13,'Phoenix':14,'Void Ray':15,'Oracle':16,'Carrier':17,'Tempest':18,'Mothership':19}
@@ -17,5 +18,4 @@ for i in range(20):
 	# prints the label
 	for frame in data :
 		print unit_names_dict.keys()[unit_names_dict.values().index(frame[-1])]
-
 

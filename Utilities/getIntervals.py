@@ -9,9 +9,12 @@ from scipy.stats import norm
 
 # Basic way to create a beta distribution with parameters alpha and beta
 # for separating intervals
-## bet = beta(3,4)
+## bet = beta(1,2)
 ## curve = np.arange(0.0, 1, .05)
 ## plt.plot(curve, bet.pdf(curve), linewidth=2.0)
+## plt.show()
+## plt.savefig('beta_1_2.png')
+## quit()
 ## inter_vals = bet.cdf(np.arange(0, 1, .05))
 ## inter_vals[0] = 0.0
 ## print inter_vals
@@ -21,6 +24,8 @@ from scipy.stats import norm
 ## nor = norm(loc=.3, scale=.3)
 ## curve = np.arange(0.0, 1, .05)
 ## plt.plot(curve, nor.pdf(curve), linewidth=2.0)
+## plt.show()
+## plt.savefig('gauss_.3_.3.png')
 ## inter_vals = nor.cdf(np.arange(0, 1, .05))
 ## inter_vals[0] = 0.0
 ## print inter_vals
