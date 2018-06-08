@@ -5,7 +5,7 @@ import numpy as np
 import pandas as pd
 
 #train and test should be type of pandas dataframe
-def NeuralNetwork(train, test):
+def NeuralNetwork(train, test, file):
         #Defining layers with input layer having 49 inputs, activation functions are relu.
         model = Sequential()
         model.add(Dense(49, activation='relu', input_dim=49))
@@ -31,3 +31,4 @@ def NeuralNetwork(train, test):
 
         #Output the metrics defined in compile
         print(model.evaluate(test_arr_x, test_arr_y))
+        model.save(file[:-4] + '.h5')

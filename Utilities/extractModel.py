@@ -20,6 +20,6 @@ def Main(input_file):
 
 	#Neural Network
 	
-	NeuralNetwork(train,test)
+	NeuralNetwork(train, test, input_file)
 
 Main(sys.argv[1])
