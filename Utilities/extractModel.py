@@ -3,6 +3,9 @@ import numpy as np
 import pandas as pd
 from modelTemplate import NeuralNetwork
 
+# Takes in an input file and loads the matrix. This is loaded into a
+# dataframe which is later split into training and testing sets 
+
 def Main(input_file):
 	#Dataframe Column Names
 	column_names = ['Cumulative','Frame ID','Minerals','Vespene','Food Cap','Food Used','Food Army','Food Worker','Idle Worker Count','Army Count','Warp Gate Count','Probe','Zealot','Stalker','Sentry','Adept','High Templar','Dark Templar','Immortal','Colossus','Disruptor','Archon','Observer','Warp Prism','Phoenix','Void Ray','Oracle','Carrier','Tempest','Mothership','Enemy Probe','Enemy Zealot','Enemy Stalker','Enemy Sentry','Enemy Adept','Enemy High Templar','Enemy Dark Templar','Enemy Immortal','Enemy Colossus','Enemy Disruptor','Enemy Archon','Enemy Observer','Enemy Warp Prism','Enemy Phoenix','Enemy Void Ray','Enemy Oracle','Enemy Carrier','Enemy Tempest','Enemy Mothership','Most Beneficial Unit']
@@ -18,8 +21,8 @@ def Main(input_file):
 	train = df[msk]
 	test = df[~msk]
 
-	#Neural Network
-	
+	#Neural Network training and testing
 	NeuralNetwork(train, test, input_file)
 
+# uses command line arg as file name
 Main(sys.argv[1])
